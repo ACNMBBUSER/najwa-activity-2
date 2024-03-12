@@ -36,6 +36,11 @@ public class ResponseHandler <T>{
         return new ResponseHandler(status, (Object)null);
     }
 
+    public ResponseHandler generateFailResponse(String error, Object data) {
+        Status status = new Status("SF001", "Generic Fail", "Operation Failed", Instant.now().toEpochMilli(), error);
+        return new ResponseHandler(status, data);
+    }
+
 //    public ResponseHandler generateFailResponse(int statusCode, String error) {
 //        Status status = new Status("FAILED", statusCode, Instant.now().toEpochMilli(), error);
 //        return new ResponseHandler(status, (Object)null);
