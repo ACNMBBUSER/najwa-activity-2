@@ -1,5 +1,7 @@
 package com.account.account.service;
 
+import com.account.account.models.request.AccountRequest;
+import com.account.account.models.response.AccountDTO;
 import com.account.account.models.response.ResponseHandler;
 import com.account.account.repository.entity.Account;
 import org.springframework.http.ResponseEntity;
@@ -10,14 +12,16 @@ import java.util.List;
 @Service
 public interface AccountService {
 
-    List<Account> getAllAccount();
+    List<AccountDTO> getAllAccount();
 
 
-    ResponseEntity<ResponseHandler> createAccount(Account account);
+    Account getProfileById(long id);
 
-    ResponseEntity<ResponseHandler> updateAccount(int id, Account account);
+    ResponseEntity<ResponseHandler> createAccount(AccountRequest account);
 
-    ResponseEntity<ResponseHandler> updateMultipleAccounts(List<Account> accountList);
+    ResponseEntity<ResponseHandler> updateAccount(long accId, AccountRequest account);
 
-    ResponseEntity<?> deleteAccount(int id);
+    ResponseEntity<ResponseHandler> updateMultipleAccounts(List<AccountRequest> accountList);
+
+    ResponseEntity<?> deleteAccount(long accId);
 }
